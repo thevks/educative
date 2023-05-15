@@ -9,22 +9,24 @@ int ExtraCharacterIndex(string firstString, string secondString)
     int n = secondString.length();
 
     int i;
-    for (i=0;i<m;i++)
-        result ^= int(firstString[i]);
+    for (i=0;i<m;i++) {
+        int val1 = firstString[i];
+        result ^= val1;
+    }
     
-    for (i=0;i<n;i++)
-        result ^= int(secondString[i]);
+    for (i=0;i<n;i++) {
+        int val2 = secondString[i];
+        result ^= val2;
+    }
 
-    char c = char(result);
+    char c = result;
 
     if (m > n) {
-        for (i=0;i<m;i++)
-            if (firstString[i] == c)
-                return i;
+        int index = firstString.find(c);
+        return index;
     } else {
-        for (i=0;i<n;i++)
-            if (firstString[i] == c)
-                return i;
+        int index = secondString.find(c);
+        return index;
     }
 
     return -1;
